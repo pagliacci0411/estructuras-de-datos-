@@ -11,19 +11,6 @@ public class Arbol_Binario {
 	
 	
 	public void insertar (int valor)
-	{package asfddsafdsf;
-
-public class Arbol_Binario {
-	
-	nodo root = null;
-	
-	public Arbol_Binario () 
-	{
-		
-	}
-	
-	
-	public void insertar (int valor)
 	{
 		nodo node = new nodo (valor);
 		if (root  == null) 
@@ -89,9 +76,11 @@ public class Arbol_Binario {
 	public void delete (int a) 
 	{
 		nodo temp = root;
-		nodo padre = null;
-		boolean left = false;
 		
+		nodo padre = this.root;
+		boolean left = false;
+		if(a == root.value)
+		padre = null;
 
 		while (temp!= null)
 		{
@@ -124,7 +113,7 @@ public class Arbol_Binario {
 			}
 			else
 			{
-					if (contador ==1)
+					if (contador == 1)
 					{
 						 if ( temp.izq != null)
 						 {
@@ -141,42 +130,27 @@ public class Arbol_Binario {
 								 padre.der = temp.der;						 
 					}	
 					else 
-					{/*
-						if(padre.der == null)
-						{
-						while (temp.der.izq != null )
-						 {
-							 temp.der.izq = temp.der.izq.izq;
-						 }
-						 padre.izq = temp.der.izq;
-						}
-						else 
-						{
-							while (temp.der.izq != null )
-							 {
-								 temp.der.izq = temp.der.izq.izq;
-							 }
-							 padre.izq = temp.der.izq;
-						}*/
+					{
 					nodo less = temp.der;
 					nodo less_padre = less;
 					while (less.izq != null)
 					{
-					less_padre = less;
+						less_padre = less;
 						less = less.izq;
 					}
-					
-					if(less.der != null)
+					if(!less_padre.equals(less))
 					{
-						less_padre.izq = less.der;
+						if(less.der != null)
+							less_padre.izq = less.der;
+						
+						
+						less.der = temp.der;
 					}
-					
-					less.der = temp.der;
+									
 					less.izq = temp.izq;
 					
-					/// hay un error en un caso 					
 					if(left)
-					padre.izq = less;
+						padre.izq = less;
 					else
 						padre.der = less;
 					
@@ -206,15 +180,17 @@ public class Arbol_Binario {
 	public static void main (String[] args)
 	{
 		Arbol_Binario tree = new Arbol_Binario ();
-		tree.insertar(82);	
-		tree.insertar(55);	
-		tree.insertar(38);
-		tree.insertar(2);
-		tree.insertar(70);
-		tree.insertar(81);
+		tree.insertar(52);	
+		tree.insertar(18);	
+		tree.insertar(60);
+		tree.insertar(87);	
+		tree.insertar(83);
+		
+		tree.insertar(100);
 		tree.insertar(85);
 		
+		tree.delete(87);
+		tree.delete(52);
 		tree.inorder(tree.root);
-		
 		}
 }
