@@ -3,29 +3,27 @@ package arbol_avl;
 public class complete 
 {
 
-		public Complete()
+		public Complete(){}
+		
+		public in_and pre(String pre, String in)
 		{
 			
-		}
-		
-		public arbol_binario in_PreToPost(String pre, String in)
-		{
+			
 			if(in.length() == 0)
 				return new arbol_binario();	
 			else
 			{	
-				arbol_binario  temp = new arbol_binario();
-				if(in.length() == 1)
-					temp.root = new Node(in);
-				else
-				{	
-					int[] Arr = new int[in.length()];
-				
+			arbol_binario  temp = new arbol_binario();
+			if(in.length() == 1)
+				temp.root = new Node(in);
+			else
+			{	
+				int[] Arr = new int[in.length()];
 					for(int i = 0; i < in.length() ; i++)
-						Arr[i] = pre.indexOf(in.substring(i,i+1));
-				
-					int min = Integer.MAX_VALUE;
-					int index = -1;
+				Arr[i] = pre.indexOf(in.substring(i,i+1));
+			
+				int min = Integer.MAX_VALUE;
+				int index = -1;
 					for(int i = 0; i < Arr.length ; i++)
 						if(Arr[i] < min)
 						{	
